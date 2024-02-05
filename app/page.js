@@ -1,11 +1,12 @@
 import CmsLayout from "@/app/components/shared/layout/cms"
 const Home = ()=>{
-  console.log(process.env.npm_package_name)
+  const app = {
+    name: process.env.npm_package_name,
+    version: process.env.npm_package_version
+  }
   return (
     <>
-      <CmsLayout>
-         <h1>i am cms layout</h1>
-      </CmsLayout>
+      <CmsLayout app={app} />
     </>
   )
 }

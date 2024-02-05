@@ -6,7 +6,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const items = [
 
 ]
-const CmsLayout = ({children}) => {
+const CmsLayout = ({children,app}) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -43,8 +43,9 @@ const CmsLayout = ({children}) => {
           style={{
             textAlign: 'center',
           }}
+          className='capitalize'
         >
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
+          {app.name} ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
     </Layout>
