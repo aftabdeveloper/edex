@@ -2,7 +2,8 @@
 import Image from "next/image"
 // use lazy load concept to import data because it is huge data
 import CountryCodes from "@/json/CountryCodes" 
-import { Form, Input, Button, Select, Divider } from 'antd';
+import { Form, Input, Button, Select, Divider,Checkbox } from 'antd';
+import Link from "next/link";
 import {
     FacebookFilled,
     GoogleOutlined,
@@ -25,7 +26,6 @@ const Signup = ()=>{
             style={{
               width: 70,
             }}
-            defaultValue={'+91'}
           >
             {
                 CountryCodes.map((country,countryIndex)=>(
@@ -61,6 +61,11 @@ const Signup = ()=>{
                             autoComplete="off"
                             onFinish={onSignup}
                             form={signupForm}
+                            initialValues={
+                                {
+                                'code': '+91' 
+                                }
+                            }
                         >
                             <Item 
                                 label={<span className="text-gray-500 font-semibold">Email Address</span>}
@@ -108,6 +113,18 @@ const Signup = ()=>{
                                 />
 
                             </Item>
+                            <Item
+                                name="term-and-conditions"
+                                valuePropName="checked"
+                                >
+                                <Checkbox
+                                    className="flex"
+                                >
+                                    <span className="mr-1">I accept</span>
+                                    <Link href="/terms-and-condition">Terms & Conditions</Link>
+                                </Checkbox>
+                            </Item>
+
                             <Item>
                                 <Button 
                                     size="large"
