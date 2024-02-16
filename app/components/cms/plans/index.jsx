@@ -14,10 +14,11 @@ import {
 import { useState } from "react"
 
 const CmsPlan = ()=>{
-    const[openDrawer,setOpenDrawer] = useState(true)
-
+    const[openDrawer,setOpenDrawer] = useState(false)
+    const onCreatePlan = (values)=>{
+        console.log(values)
+    }
     return (
-        <>
             <CmsLayout>
                 <div>
                     <Button
@@ -33,7 +34,7 @@ const CmsPlan = ()=>{
                          onClose={()=>setOpenDrawer(false)}
                          width={480}
                     >
-                        <Form>
+                        <Form onFinish={onCreatePlan}>
                             <Form.Item
                                 label="Plan name"
                                 name="plan"
@@ -41,7 +42,9 @@ const CmsPlan = ()=>{
                                     required: "Enter plan name"
                                 }]}
                             >
-                                <Input />
+                                <Input 
+                                    size="large"
+                                />
                             </Form.Item>
                             <Form.Item
                                 label="Description"
@@ -53,15 +56,17 @@ const CmsPlan = ()=>{
                             <div className="flex gap-2">
                                 <Form.Item
                                     className="w-[70px]"
-
+                                    name="plan-interval"
                                 >
-                                <Input placeholder="1"/>
+                                <Input placeholder="1" size="large"
+/>
                                 </Form.Item>
                                 <Form.Item
                                     className="flex-1"
-                                    name="period"
+                                    name="plan-period"
                                 >
-                                    <Select placeholder="Months">
+                                    <Select placeholder="Months" size="large"
+>
                                         <Select.Option value="days">Days</Select.Option>
                                         <Select.Option value="weeks">Weeks</Select.Option>
                                         <Select.Option value="months">Months</Select.Option>
@@ -81,6 +86,7 @@ const CmsPlan = ()=>{
                                         placeholder="1000"
                                         addonBefore={<label>₹</label>}
                                         addonAfter={<label>Per Unit</label>}
+                                        size="large"
                                     />
                             </Form.Item>
                             <Form.Item>
@@ -102,7 +108,6 @@ const CmsPlan = ()=>{
                     </Drawer>
                 </div>
             </CmsLayout>
-        </>
     )
 }
 
