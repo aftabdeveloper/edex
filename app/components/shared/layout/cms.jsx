@@ -36,16 +36,18 @@ const CmsLayout = ({children,app}) => {
             background: colorBgContainer,
           }}
         />
+        <Content className='flex justify-center'>
         {
             children
         }
+        </Content>
         <Footer
           style={{
             textAlign: 'center',
           }}
           className='capitalize'
         >
-          {app.name} ©{new Date().getFullYear()} Created by Ant UED
+          {app && app.name} ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
     </Layout>
