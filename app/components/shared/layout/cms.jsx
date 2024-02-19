@@ -1,12 +1,24 @@
 "use client"
-import { Layout, Menu, theme
+import { 
+  Layout,
+  Menu,
+  theme,
+  Breadcrumb
 } from 'antd';
 
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 const { Header, Content, Footer, Sider } = Layout;
 const items = [
 
 ]
 const CmsLayout = ({children,app}) => {
+  const path = usePathname()
+  const pathname = path.split("/").slice(1)
+  const getLink = (index)=>{
+    const route = pathname.slice(0,index+1)
+    return "/"+route.join("/")
+  }
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -36,7 +48,20 @@ const CmsLayout = ({children,app}) => {
             background: colorBgContainer,
           }}
         />
-            <Content
+        <div>
+          <Breadcrumb>
+              {
+                pathname.map((item,index)=>(
+                  <Breadcrumb.Item key={index}>
+                    {
+                      <Link href={getLink(index)}>{item}</Link>
+                    }
+                  </Breadcrumb.Item>
+                ))
+              }
+          </Breadcrumb>
+        </div>
+          <Content
           style={{
             margin: '24px 16px 0',
           }}
@@ -60,7 +85,7 @@ const CmsLayout = ({children,app}) => {
           }}
           className='capitalize'
         >
-          {app.name} ©{new Date().getFullYear()} Created by Ant UED
+          {app && app.name} ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
     </Layout>
