@@ -36,7 +36,7 @@ const CmsLayout = ({children,app}) => {
             background: colorBgContainer,
           }}
         />
-            <Content
+          <Content
           style={{
             margin: '24px 16px 0',
           }}
@@ -51,7 +51,10 @@ const CmsLayout = ({children,app}) => {
             <h1>i am aftab alam</h1>
           {
             children
-        }
+          }
+          </div>
+        </Content>
+      
         <Footer
           style={{
             textAlign: 'center',
