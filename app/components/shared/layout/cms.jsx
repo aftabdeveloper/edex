@@ -36,11 +36,22 @@ const CmsLayout = ({children,app}) => {
             background: colorBgContainer,
           }}
         />
-        <Content className='flex justify-center'>
-        {
+            <Content
+          style={{
+            margin: '24px 16px 0',
+          }}
+        >
+          <div
+            style={{
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
+              textAlign: "center"
+            }}
+          >
+            <h1>i am aftab alam</h1>
+          {
             children
         }
-        </Content>
         <Footer
           style={{
             textAlign: 'center',
